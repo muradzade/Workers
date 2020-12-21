@@ -1,0 +1,41 @@
+﻿@model Workers.Data.Entity.Worker
+@{
+    ViewData["Title"] = "DeleteWorker";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <strong>Normal</strong> Form
+    </div>
+    <div class="card-body card-block">
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <form asp-action="DeleteWorker" method="post" class="">
+            <input asp-for="@Model.Id" class="form-control" type="hidden">
+            <div class="form-group">
+                <label asp-for="@Model.Name" class=" form-control-label"></label>
+                <input asp-for="@Model.Name" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Surname" class=" form-control-label"></label>
+                <input asp-for="@Model.Surname" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Phone" class=" form-control-label"></label>
+                <input asp-for="@Model.Phone" class="form-control" readonly>
+            </div>
+            <br />
+            <p>Verilen kaydı silmek istediğinizde emin misiniz?</p>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-dot-circle-o"></i> Sil
+                </button>
+                <a class="btn btn-danger btn-sm" asp-action="Workers">
+                    <i class="fa fa-ban"></i> Vazgeç
+                </a>
+            </div>
+        </form>
+    </div>
+
+</div>

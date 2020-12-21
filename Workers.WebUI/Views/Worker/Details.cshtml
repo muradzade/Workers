@@ -1,0 +1,47 @@
+﻿@model Workers.Data.Entity.Worker
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div class="container">
+    <div class="col-8">
+        <h1>Detay Bilgi</h1>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Ad</td>
+                    <td class="text-right">@Model.Name</td>
+                </tr>
+                <tr>
+                    <td>Soyad</td>
+                    <td class="text-right">@Model.Surname</td>
+                </tr>
+                <tr>
+                    <td>Telefon Numarasi</td>
+                    <td class="text-right">@Model.Phone</td>
+                </tr>
+                <tr>
+                    <td>Departman</td>
+                    <td class="text-right">@Model.Department.DeptName</td>
+                </tr>
+                <tr>
+                    <td>Yonetici</td>
+                    <td class="text-right">
+                        @if (Model.Manager != null)
+                        {
+                            <p>@Model.Manager.Name @Model.Manager.Surname</p>
+                        }
+                        else
+                        {
+                            <p>Yonetici atanmamis</p>
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+    </div>
+
+</div>

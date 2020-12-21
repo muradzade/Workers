@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Workers.Data.Entity.Worker>
+@{
+    ViewData["Title"] = "ListWorkers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- DATA TABLE -->
+        <div class="table-data__tool">
+            <div class="table-data__tool-left">
+                <form asp-action="ListWorkers" method="get">
+                    <div class="form-actions bg-light">
+                        <p>
+                            <input type="text" name="search" value="@ViewBag.SearchBox" />
+                            <input type="submit" value="Ara" class="btn btn-primary" />
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <div class="table-data__tool-right">
+                <a asp-action="AddWorker" class="btn au-btn au-btn-icon au-btn--green au-btn--small">
+                    <i class="zmdi zmdi-plus"></i>Çalışan ekle
+                </a>
+            </div>
+        </div>
+        <div class="table-responsive table-responsive-data2">
+            <table class="table table-data2">
+                <thead>
+                    <tr>
+                        <th>
+                            <a asp-action="ListWorkers" asp-route-sortBy="@ViewBag.sortBy" asp-route-sortParam="name">
+                                Ad
+                            </a>
+                        </th>
+                        <th>
+                            <a asp-action="ListWorkers" asp-route-sortBy="@ViewBag.sortBy" asp-route-sortParam="surname">
+                                Soyad
+                            </a>
+                        </th>
+                        <th>Telefon</th>
+                        <th>
+                            <a asp-action="ListWorkers" asp-route-sortBy="@ViewBag.sortBy" asp-route-sortParam="department">
+                                Departman
+                            </a>
+                        </th>
+                        <th>
+                            <a asp-action="ListWorkers" asp-route-sortBy="@ViewBag.sortBy" asp-route-sortParam="manager">
+                                Yonetici
+                            </a>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var worker in Model)
+                    {
+                        <tr class="tr-shadow">
+                            <td>@worker.Name</td>
+                            <td>@worker.Surname</td>
+                            <td>
+                                <span class="block-email">@worker.Phone</span>
+                            </td>
+                            <td>
+                                @if (worker.Department != null)
+                                {
+                                    @worker.Department.DeptName
+                                }
+                                else
+                                {
+                                    <p>Departman atanmamış</p>
+                                }
+                            </td>
+                            <td>
+ 
+                                    <p>@worker.Manager.Name @worker.Manager.Surname</p>
+
+                            </td>
+                            <td>
+                                <div class="table-data-feature">
+                                    <a class="item btn" asp-action="EditWorker" asp-route-id="@worker.Id" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <i class="zmdi zmdi-edit"></i>
+                                    </a>
+                                    <a class="item btn" asp-action="DeleteWorker" asp-route-id="@worker.Id" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <i class="zmdi zmdi-delete"></i>
+                                    </a>
+                                    <a class="item btn" asp-action="Details" asp-controller="Worker" asp-route-id="@worker.Id" data-toggle="tooltip" data-placement="top" title="More">
+                                        <i class="zmdi zmdi-more"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="spacer"></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- END DATA TABLE -->
+    </div>
+</div>

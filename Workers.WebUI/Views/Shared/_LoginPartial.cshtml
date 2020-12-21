@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Workers.Data.Entity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+    <div class="header__tool">
+        <div class="account-wrap">
+            <div class="account-item account-item--style2 clearfix js-item-menu">
+
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <div class="content">
+                        <a class="js-acc-btn" href="#">@User.Identity.Name</a>
+                    </div>
+
+                    <div class="account-dropdown js-dropdown">
+
+                        <div class="account-dropdown__body">
+                            <div class="account-dropdown__item">
+                                <a asp-action="Index" asp-controller="Home">
+                                    <i class="zmdi zmdi-home"></i>Anasayfa
+                                </a>
+                            </div>
+                            <div class="account-dropdown__item">
+                                <a asp-action="Workers" asp-controller="Admin">
+                                    <i class="zmdi zmdi-account"></i>Admin Sayfasi
+                                </a>
+                            </div>
+                            <div class="account-dropdown__item">
+                                <a asp-action="ChangePassword" asp-controller="Account">
+                                    <i class="zmdi zmdi-key"></i>Sifre Degistir
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="account-dropdown__footer">
+                            <a asp-action="Logout" asp-controller="Account">
+                                <i class="zmdi zmdi-power"></i>Cikis Yap
+                            </a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="content">
+                        <a class="js-acc-btn" href="#">Giris</a>
+                    </div>
+                    <div class="account-dropdown js-dropdown">
+                        <div class="account-dropdown__item">
+                            <a asp-action="Index" asp-controller="Home">
+                                <i class="zmdi zmdi-home"></i>Anasayfa
+                            </a>
+                        </div>
+                        <div class="account-dropdown__body">
+                            <div class="account-dropdown__item">
+                                <a asp-action="Login" asp-controller="Account">
+                                    <i class="zmdi zmdi-account"></i>Giris Yap
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+@*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @User.Identity.Name
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" asp-action="ChangePassword" asp-controller="Account">Sifreyi Degistir</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" asp-action="Logout" asp-controller="Account">Cikis</a>
+        </div>
+    </div>
+
+}
+else
+{
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Action
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" asp-action="Login" asp-controller="Account">Giris Yap</a>
+        </div>
+    </div>
+}
+*@

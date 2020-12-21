@@ -1,0 +1,26 @@
+﻿@model Workers.Data.Entity.Department
+@{
+    ViewData["Title"] = "EditDepartment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">
+            <strong>Departman</strong>
+            <small> Ekle</small>
+        </div>
+        <div class="card-body card-block">
+            <form method="post" asp-action="AddDepartment">
+                <div class="form-group">
+                    <label asp-for="@Model.DeptName" class="form-control-label"></label>
+                    <input asp-for="@Model.DeptName" type="text" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-dot-circle-o"></i> Ekle
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+

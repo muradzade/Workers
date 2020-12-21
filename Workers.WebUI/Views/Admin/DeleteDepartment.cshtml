@@ -1,0 +1,35 @@
+﻿@model Workers.Data.Entity.Department
+@{
+    ViewData["Title"] = "DeleteDepartment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">
+            <strong>Departman</strong>
+            <small> Ekle</small>
+        </div>
+        <div class="card-body card-block">
+            <div class="text-danger" asp-validation-summary="All"></div>
+            <form method="post" asp-action="DeleteDepartment">
+                <div class="form-group">
+                    <label asp-for="@Model.DeptName" class="form-control-label"></label>
+                    <input asp-for="@Model.DeptName" type="text" class="form-control">
+                </div>
+                <br />
+                <p>Verilen kaydı silmek istediğinizde emin misiniz?</p>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-dot-circle-o"></i> Sil
+                    </button>
+                    <a class="btn btn-danger btn-sm" asp-action="ListDepartments">
+                        <i class="fa fa-ban"></i> Vazgeç
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

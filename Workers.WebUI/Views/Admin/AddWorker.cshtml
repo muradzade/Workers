@@ -1,0 +1,61 @@
+﻿@model Workers.Data.Entity.Worker
+@{
+    ViewData["Title"] = "AddWorker";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">
+            <strong>Calisan</strong>
+            <small> Ekle</small>
+        </div>
+        <div class="card-body card-block">
+            <form method="post" asp-action="AddWorker">
+                <div class="form-group">
+                    <label asp-for="@Model.Name" class=" form-control-label"></label>
+                    <input asp-for="@Model.Name" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Surname" class=" form-control-label"></label>
+                    <input asp-for="@Model.Surname" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Phone" class=" form-control-label"></label>
+                    <input asp-for="@Model.Phone" type="text" class="form-control">
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label asp-for="@Model.Department" class=" form-control-label"></label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <select asp-for="@Model.DeptId" class="form-control">
+                            <option value="0">Seciniz</option>
+                            @foreach (var dept in ViewBag.Departments)
+                            {
+                                <option value="@dept.Id">@dept.DeptName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label asp-for="@Model.Manager" class=" form-control-label"> </label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <select asp-for="@Model.ManagerId" class="form-control">
+                            <option value="0">Seciniz</option>
+                            @foreach (var mngr in ViewBag.Managers)
+                            {
+                                <option value="@mngr.Id">@mngr.Name @mngr.Surname</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-dot-circle-o"></i> Ekle
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
